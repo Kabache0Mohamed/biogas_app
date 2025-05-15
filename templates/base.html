@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to Biogas Waste Exchange</h1>
+{% if user.is_authenticated %}
+<p>Submit your biogas waste and get coupons in return!</p>
+<a href="{{ url_for('submit_waste') }}">Submit Waste</a>
+{% else %}
+<p>Please <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">register</a> to start submitting waste.</p>
+{% endif %}
+{% endblock %}
+
+

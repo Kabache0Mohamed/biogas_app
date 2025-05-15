@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Biogas Exchange</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <h2>All Waste Submissions</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>ID</th>
+            <th>User Email</th>
+            <th>Quantity (kg)</th>
+            <th>Description</th>
+            <th>Coupon Code</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.user.email }}</td>
+            <td>{{ entry.quantity }}</td>
+            <td>{{ entry.description }}</td>
+            <td>{{ entry.coupon_code }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><a href="/">Home</a> | <a href="/logout">Logout</a></p>
+</body>
+</html>

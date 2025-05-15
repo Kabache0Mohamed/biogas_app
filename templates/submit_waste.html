@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Submit Waste</title></head>
+<body>
+<h1>Submit your Biogas Waste</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+    {% for msg in messages %}
+      <li style="color: green;">{{ msg }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form method="POST">
+  Quantity (kg): <input type="number" step="any" name="quantity" required><br><br>
+  Description: <input type="text" name="description" required><br><br>
+  <button type="submit">Submit Waste</button>
+</form>
+
+<p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>

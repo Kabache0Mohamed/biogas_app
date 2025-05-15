@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation</title>
+</head>
+<body>
+    <h2>Thank you for your submission!</h2>
+    <p>Your coupon code is: <strong>{{ coupon_code }}</strong></p>
+    <p>Please keep this code for your records.</p>
+    <a href="{{ url_for('submit_waste') }}">Submit another</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
