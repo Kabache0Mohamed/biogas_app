@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head><title>Home</title></head>
+<head>
+  <title>Home</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .bg-image {
+      /* The image as background */
+      background-image: url("{{ url_for('static', filename='png2pdf-1.png') }}");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.5); /* translucent black behind text */
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 300px;
+    }
+    a {
+      color: #00ffff;
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
-<h1>Welcome {% if user.is_authenticated %}{{ user.email }}{% else %}Guest{% endif %}!</h1>
-
-{% if user.is_authenticated %}
-  <p><a href="{{ url_for('submit_waste') }}">Submit Biogas Waste</a></p>
-  <p><a href="{{ url_for('logout') }}">Logout</a></p>
-{% else %}
-  <p><a href="{{ url_for('login') }}">Login</a></p>
-  <p><a href="{{ url_for('register') }}">Register</a></p>
-{% endif %}
+  <div class="bg-image">
+    <div class="content">
+      <h1>Welcome {% if user.is_authenticated %}{{ user.email }}{% else %}Guest{% endif %}</h1>
+      {% if user.is_authenticated %}
+        <a href="{{ url_for('submit_waste') }}">Submit Biogas Waste</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </div>
+  </div>
 </body>
 </html>

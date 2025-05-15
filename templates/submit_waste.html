@@ -1,25 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head><title>Submit Waste</title></head>
+<head>
+  <title>Submit Biogas Waste</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .bg-image {
+      background-image: url("{{ url_for('static', filename='Pasted image.png') }}");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 10px;
+      min-width: 300px;
+    }
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      background-color: #00ffff;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    a {
+      color: #00ffff;
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      margin-top: 15px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
-<h1>Submit your Biogas Waste</h1>
-
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul>
-    {% for msg in messages %}
-      <li style="color: green;">{{ msg }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
-<form method="POST">
-  Quantity (kg): <input type="number" step="any" name="quantity" required><br><br>
-  Description: <input type="text" name="description" required><br><br>
-  <button type="submit">Submit Waste</button>
-</form>
-
-<p><a href="{{ url_for('logout') }}">Logout</a></p>
+  <div class="bg-image">
+    <div class="content">
+      <h1>Submit your Biogas Waste</h1>
+      <form action="{{ url_for('submit_waste') }}" method="post">
+        <label for="quantity">Quantity (kg):</label><br>
+        <input type="number" id="quantity" name="quantity" required><br>
+        
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" required></textarea><br>
+        
+        <input type="submit" value="Submit">
+      </form>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
 </body>
 </html>
